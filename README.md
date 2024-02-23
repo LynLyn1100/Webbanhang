@@ -1,7 +1,8 @@
 # Django e-commerce
 
-An e-commerce app made using django 3, sqlite and bootstrap 4.
-This app also uses several other packages like -
+Một ứng dụng thương mại điện tử (web bán hàng đơn giản) được tạo bằng Django 3, SQLite và Bootstrap 4.
+
+Ứng dụng này cũng sử dụng một số packages phần mềm khác như:
 
 - django-crispy-forms
 - django-filter
@@ -9,36 +10,32 @@ This app also uses several other packages like -
 - easy-thumbnails
 - dj-database-url
 
-In this app admin can manage products and orders and a customer can simply register, add items to cart and then place an order, customer can also generate an invoice of his order.
+Trong ứng dụng này, quản trị viên có thể quản lý sản phẩm và đơn hàng, và khách hàng có thể đăng ký, thêm sản phẩm vào giỏ hàng và sau đó đặt hàng. Khách hàng cũng có thể tạo hóa đơn cho đơn hàng của mình.
 
-To run this app on your local machine you can simply follow the instructions given below.
+Để chạy ứng dụng này trên máy cục bộ của bạn, bạn có thể làm theo các hướng dẫn dưới đây.
 
-To install dependencies you can run
+Để cài đặt các phụ thuộc, bạn có thể chạy lệnh:
 
 ```shell
 pip install -r requirements.txt
 ```
 
-To create superuser run this command:
+Để tạo các tập tin migrations :
 
 ```shell
-python manage.py createsuperuser -> thaoly 123456789
+python manage.py makemigrations
 ```
 
-and then enter your username, email and password.
-
-To make migrations :'
-
-python manage.py makemigrations
+Để áp dụng các tập tin migrations đó vào cơ sở dữ liệu thực tế:
 
 ```shell
 python manage.py migrate
 ```
 
-To run server :
+Để run server :
 
 ```shell
 python manage.py runserver
 ```
 
-After starting server go to your web browser and visit http://localhost:8000/store and for admin module visit http://localhost:8000/admin and login using superuser credentials.
+Sau khi khởi động máy chủ, hãy mở trình duyệt web của bạn và truy cập vào địa chỉ http://localhost:8000/store để truy cập vào giao diện của ứng dụng cửa hàng. Để truy cập vào module quản trị viên, hãy truy cập vào địa chỉ http://localhost:8000/admin và đăng nhập bằng thông tin đăng nhập của superuser.
