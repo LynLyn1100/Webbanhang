@@ -1,23 +1,36 @@
-{% extends 'base.html' %} {% block title %} Categories {% endblock title %}
+{% extends 'base.html' %} {% block title %} Phân loại {% endblock title %}
 {%block content %}
-<div class="row my-2">
-  <!--
-  <body>
-    <section class="wrapper">
-        <h1></h1>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-    </section>
-  </body>
--->
+  <style>
+    /* Chủ đề sáng */
+    [data-theme='light'] body {
+        background-color: #ffffff; /* Màu nền trong chủ đề sáng */
+        color: #000000; /* Màu chữ trong chủ đề sáng */
+}
+
+/* Chủ đề tối */
+[data-theme='dark'] body {
+  background-color: #000000; /* Màu nền trong chủ đề tối */
+  color: #ffffff; /* Màu chữ trong chủ đề tối */
+}
+/* Biểu tượng chuyển đổi */
+    .theme-toggle-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+    /* Biểu tượng chuyển đổi */
+    .theme-toggle-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+   .cnt-color {
+  color: black; /* Set the color of the "Sản phẩm" and pluralized product count text to red */
+}
+    </style>
+
+
+<div class="row my-2 text-color">
+
   {% for c in categories %}
   <div class="col-lg-3 col-md-6 col-12 my-2 px-sm-2">
     <div class="card text-center">
@@ -26,8 +39,8 @@
           <a href="{{ c.get_absolute_path }}">{{c.name}}</a>
         </h3>
       </div>
-      <div class="card-footer">
-        {{c.num_products}} Product{{c.num_products|pluralize}}
+      <div class="card-footer cnt-color">
+        {{c.num_products}} Sản phẩm
       </div>
     </div>
   </div>

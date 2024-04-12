@@ -39,7 +39,7 @@ class CreateOrder(LoginRequiredMixin, generic.CreateView):
                 OrderItem(order=order, product=i, quantity=q, total=q*i.price))
         OrderItem.objects.bulk_create(orderitems)
         cart.clear()
-        messages.success(self.request, 'Your order is successfully placed.')
+        messages.success(self.request, 'Đặt hàng thành công.')
         return redirect('store:product_list')
 
 

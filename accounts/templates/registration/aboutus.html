@@ -1,0 +1,148 @@
+{% extends 'base.html' %} {% block title %} Thông tin
+{% endblock title %} {% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONL Shop - Thời trang nữ Online</title>
+    <script src="/static/js/theme.js"></script>
+
+    <style>
+        .section-title{
+            font-size: 28px;
+        }
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: #gray;
+          }
+    /* Chủ đề sáng */
+    [data-theme='light'] body {
+        background-color: #ffffff; /* Màu nền trong chủ đề sáng */
+        color: #000000; /* Màu chữ trong chủ đề sáng */
+}
+
+/* Chủ đề tối */
+[data-theme='dark'] body {
+  background-color: #000000; /* Màu nền trong chủ đề tối */
+  color: #ffffff; /* Màu chữ trong chủ đề tối */
+}
+/* Biểu tượng chuyển đổi */
+    .theme-toggle-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+    /* Biểu tượng chuyển đổi */
+    .theme-toggle-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    </style>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-content {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .section-img {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .highlight {
+            color: #c0392b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-color text-dark">
+        <div class="header">
+            <h1>Chào mừng bạn đến với <span class="highlight">ONL Shop - Thời trang nữ Online</span>!</h1>
+        </div>
+
+        <div class="section text-color text-dark">
+            <h2 class="section-title">Giới thiệu</h2>
+            <p class="section-content">ONL Shop là điểm đến lý tưởng cho những tín đồ thời trang nữ. Chúng tôi tự hào mang đến cho bạn một bộ sưu tập đa dạng các sản phẩm quần jean nữ và áo phông nữ phong cách và xu hướng nhất.</p>
+            <div class="section-img">
+                <img src="{% static 'images/banner/b10.png' %}" width="500px" heigth="300px" alt="Giới thiệu" width="300">
+            </div>
+        </div>
+
+        <div class="section text-color text-dark">
+            <h2 class="section-title">Về chúng tôi</h2>
+            <p class="section-content">ONL Shop đã xây dựng một đội ngũ chuyên gia thời trang năng động và sáng tạo, luôn cập nhật xu hướng mới nhất để đem đến cho bạn những sản phẩm phù hợp và đáng tin cậy.</p>
+            <div class="section-img">
+                <img src="{% static 'images/banner/b11.png' %}" width="500px" heigth="300px" alt="Về chúng tôi" width="300">
+            </div>
+        </div>
+
+        <div class="section text-color text-dark">
+            <h2 class="section-title">Chính sách ưu đãi</h2>
+            <p class="section-content">Tại ONL Shop, chúng tôi luôn mang đến những ưu đãi đặc biệt để thưởng thức trọn vẹn trải nghiệm mua sắm của bạn. Từ chương trình giảm giá hấp dẫn, khuyến mãi mua một tặng một cho những sản phẩm hot nhất, đến chính sách đổi trả linh hoạt và miễn phí vận chuyển, chúng tôi cam kết cung cấp sự hài lòng và niềm vui cho khách hàng của ONL Shop.</p>
+            <div class="section-img">
+                <img src="{% static 'images/banner/b12.jpg' %}" width="500px" heigth="300px" alt="Chính sách ưu đãi" width="300">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock content %}
+</body>

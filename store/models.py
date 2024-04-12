@@ -56,6 +56,13 @@ class Product(models.Model):
     material =  models.TextField(null=False,blank=True)
     branch= models.TextField(null=False,blank=True)
     detail=models.TextField(null=False,blank=True)
+    
+    image1 = models.CharField(max_length=255, null=True,blank=True)
+    image2 = models.CharField(max_length=255, null=True,blank=True)
+    image3 = models.CharField(max_length=255, null=True,blank=True)
+    video = models.FileField(upload_to="videos/",null=True,blank=True)
+    video1 = models.CharField(max_length=255, null=True,blank=True)
+
     class Meta:
         index_together = ('id', 'slug')
         ordering = ('-created',)

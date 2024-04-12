@@ -9,13 +9,12 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+import django
 
 #import dj_database_url
 import os
 #from .database import * #minh tu them vao
 import dj_database_url
-
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #la 1 chuoi
@@ -29,9 +28,10 @@ SECRET_KEY = os.environ.get(
     'secret_key', '_=4dm6vs^&ho6p29lhhkc3vh=(zl5-one3==g70o=z9b%&ddrt')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('debug', True)
+DEBUG = True
 
-ALLOWED_HOSTS = ['huyamazingshop.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1']
+
 
 
 # Application definition
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'store:product_list'
-
+#LOGIN_REDIRECT_URL = 'store:product'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -64,15 +64,19 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
+
+#tu them
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 ROOT_URLCONF = 'ecommerce.urls'
 
@@ -99,26 +103,19 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {}
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    print("Postgres URL not found, using sqlite instead")
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-
+}
+'''
 DATABASES['default'] = dj_database_url.config(
-    default='sqlite:///db.sqlite3')
+    default='sqlite:///db.sqlite3'
+)'''
 
-
+#tu them
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -156,12 +153,32 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+#tu them lai
+'''
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+'''
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+
+
+#thu xoa di
+'''MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
-import django_heroku
-django_heroku.settings(locals())
+'''
+#import django_heroku
+#django_heroku.settings(locals())
