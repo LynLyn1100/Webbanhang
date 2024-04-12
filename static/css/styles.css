@@ -9,7 +9,64 @@ body {
   margin: 0 auto;
 }
 
+/* Quy tắc chung */
+body {
+  font-family: "Roboto", sans-serif;
+}
 
+.auth-card {
+  max-width: 450px;
+  margin: 0 auto; /* Căn giữa auth-card */
+  padding: 20px; /* Khoảng cách nội dung từ mép auth-card */
+}
+
+.img-aspect {
+  width: 100%; /* Ảnh sẽ chiếm toàn bộ chiều rộng của auth-card */
+}
+
+/* Media Queries cho các thiết bị di động */
+@media only screen and (max-width: 600px) {
+  .auth-card {
+    max-width: 100%; /* auth-card sẽ có chiều rộng tối đa là 100% của viewport */
+  }
+}
+
+/* Chủ đề sáng */
+[data-theme='light'] body {
+  background-color: #ffffff; /* Màu nền trong chủ đề sáng */
+  color: #000000; /* Màu chữ trong chủ đề sáng */
+}
+
+/* Chủ đề tối */
+[data-theme='dark'] body {
+  background-color: #333333; /* Màu nền trong chủ đề tối */
+  color: #ffffff; /* Màu chữ trong chủ đề tối */
+}
+
+
+/* Thiết kế cho các thiết bị di động
+@media only screen and (max-width: 600px) {
+  /* Các quy tắc CSS dành cho thiết bị di động
+  .header {
+    font-size: 18px;
+  }
+  .menu {
+    display: none;  Ẩn menu trên thiết bị di động
+  }
+}
+ Thiết kế cho các thiết bị di động có chiều rộng tối đa là 600px
+@media only screen and (max-width: 600px) {
+  .auth-card {
+    max-width: 100%;  Đảm bảo thẻ auth-card điều chỉnh kích thước để lấp đầy không gian trên màn hình của thiết bị di động
+  }
+
+  .img-aspect {
+    width: 100%;  Thẻ img-aspect điều chỉnh kích thước để lấp đầy không gian trên màn hình của thiết bị di động
+    margin: 0;  Loại bỏ margin để làm cho hình ảnh lấp đầy không gian
+  }
+}
+
+*/
 /*them vao de tao background dong
 * {
   margin: 0;
@@ -19,7 +76,7 @@ body {
 .wrapper {
   height: 100%;
   width: 100%;
-  background-color: #AFEEEE	
+  background-color: #AFEEEE
 
 
 	;
@@ -63,15 +120,15 @@ div .dot {
   animation: animate 8s linear infinite;
 }
 
-.wrapper div:nth-child(3) { 
+.wrapper div:nth-child(3) {
   top: 60%;
   left: 80%;
   animation: animate 10s linear infinite;
 }
 
-.wrapper div:nth-child(4) { 
+.wrapper div:nth-child(4) {
   top: 40%;
-  left: 40%; 
+  left: 40%;
   animation: animate 3s linear infinite;
 }
 
@@ -165,7 +222,7 @@ $shooting-time: 3000ms;
   animation:
     tail $shooting-time ease-in-out infinite,
     shooting $shooting-time ease-in-out infinite;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -182,7 +239,7 @@ $shooting-time: 3000ms;
   &::after {
     // CodePen Error
     // @extend .shooting_star::before;
-    
+
     content: '';
     position: absolute;
     top: calc(50% - 1px);
@@ -195,7 +252,7 @@ $shooting-time: 3000ms;
     animation: shining $shooting-time ease-in-out infinite;
     transform: translateX(50%) rotateZ(-45deg);
   }
-  
+
   @for $i from 1 through 20 {
     &:nth-child(#{$i}) {
       $delay: random(9999) + 0ms;
@@ -203,7 +260,7 @@ $shooting-time: 3000ms;
       left: calc(50% - #{random(300) + 0px});
       animation-delay: $delay;
       // opacity: random(50) / 100 + 0.5;
-      
+
       &::before,
       &::after {
         animation-delay: $delay;
@@ -216,11 +273,11 @@ $shooting-time: 3000ms;
   0% {
     width: 0;
   }
-  
+
   30% {
     width: 100px;
   }
-  
+
   100% {
     width: 0;
   }
@@ -230,11 +287,11 @@ $shooting-time: 3000ms;
   0% {
     width: 0;
   }
-  
+
   50% {
     width: 30px;
   }
-  
+
   100% {
     width: 0;
   }
@@ -244,7 +301,7 @@ $shooting-time: 3000ms;
   0% {
     transform: translateX(0);
   }
-  
+
   100% {
     transform: translateX(300px);
   }
@@ -254,14 +311,14 @@ $shooting-time: 3000ms;
   0% {
     transform: rotate(45deg);
   }
-  
+
   100% {
     transform: rotate(45 + 360deg);
   }
 }
 
 */
-
+/*
 body {
   background: url('https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A3nh-n%E1%BB%81n-nh%E1%BB%AFng-%C4%91%C3%A1m-m%C3%A2y-cute.jpg') fixed;
   -webkit-animation: slide 60s linear infinite;
@@ -283,4 +340,4 @@ body {
   background-position: 1000px 0;
   }
   }
-  
+  */
