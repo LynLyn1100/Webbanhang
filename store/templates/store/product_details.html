@@ -1,23 +1,7 @@
 {%extends 'base.html'%} {%load thumbnail%} {%load store_tags%} {% block title %}
 {{product.name}} {% endblock title %} {%block content%}
 {% load static %}
-<!--
-<body>
-  <section class="wrapper">
-      <h1></h1>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-      <div><span class="dot" style="color:blue"></span></div>
-  </section>
-</body>
--->
+\
 {% comment %}
 <nav>
   <ol class="breadcrumb mt-2">
@@ -40,15 +24,15 @@
     <h3 class="font-weight-light"> {{product.price|floatformat:3}} VND </h3>
     <h4>
       {% if product.availibility %}
-      <span class="badge badge-success">Stocking</span>
+      <span class="badge badge-success">Còn hàng </span>
       {% else %}
-      <span class="badge badge-danger">Out of stock</span>
+      <span class="badge badge-danger">Hết hàng </span>
       {% endif %}
     </h4>
     <p>{{product.description}}</p>
     <p>
-      Purchased by <b>{{product.total_purchases}}</b>
-      customers {{product.total_purchases|pluralize}}.
+      Được đătj mua bởi <b>{{product.total_purchases}}</b>
+      khách hàng {{product.total_purchases|pluralize}}.
     </p>
     {% if user.is_authenticated %}
     {% if product.id in cart.keys %}
@@ -57,7 +41,7 @@
       <input type="hidden" name="product_id" value="{{product.id}}">
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text">Quantity</span>
+          <span class="input-group-text">Số lượng </span>
         </div>
         <input
           type="number"
@@ -69,10 +53,10 @@
         />
         <div class="input-group-append btn-group">
           <button class="btn btn-primary" type="submit">
-            <i class="fa fa-cart-plus fa-lg mr-2"></i> Edit
+            <i class="fa fa-cart-plus fa-lg mr-2"></i> Sửa
           </button>
           <a href="{% url 'cart:remove' product.id %}" class="btn btn-danger">
-            <i class="fa fa-times fa-lg mr-2"></i> Delete
+            <i class="fa fa-times fa-lg mr-2"></i> Xóa
           </a>
         </div>
       </div>
@@ -83,17 +67,17 @@
       <input type="hidden" name="quantity" value="1" />
       <input type="hidden" name="product_id" value="{{product.id}}" />
       <button type="submit" class="btn btn-primary">
-        <i class="fa fa-cart-plus fa-lg mr-2"></i> Add to Cart
+        <i class="fa fa-cart-plus fa-lg mr-2"></i> Thêm vào giỏ hàng
       </button>
     </form>
     {% else %}
     <button class="btn btn-primary" disabled>
-      <i class="fa fa-cart-plus fa-lg mr-2"></i> Add to Cart
+      <i class="fa fa-cart-plus fa-lg mr-2"></i> Thêm vào giỏ hàng
     </button>
     {% endif %}
     {% else %}
     <a href="{% url 'login' %}" class="btn btn-primary" disabled>
-      <i class="fa fa-sign-in fa-lg mr-2"></i> Log in to add to Cart
+      <i class="fa fa-sign-in fa-lg mr-2"></i> Đăng nhập để tham vào giỏ hàng
     </a>
     {% endif %}
   </div>
@@ -112,37 +96,37 @@
     padding: 5px;
     overflow: hidden;
   }
-  
+
   .media-wrapper video {
     border-color:red;
     position: relative;
-  }  
+  }
   .small-img-col {
     flex-shrink: 0;
     margin-right: 10px;
   }
-  
+
   .image-carousel {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
   }
-  
+
   .image-container {
     display: flex;
     overflow-x: hidden;
   }
 
   .small-img-col {
-    flex: 0 0 25%; 
+    flex: 0 0 25%;
     padding: 5px;
   }
-  
+
   .small-img {
     width: 100%;
     height: auto;
   }
-  
+
 .small-img {
   border: 2px solid transparent; /* Đường viền mặc định */
 }
@@ -162,51 +146,51 @@
     {% comment %} THÊM{% endcomment %}
         <div class="border rounded-4 mb-3 d-flex justify-content-center">
           <div class='viewpoint-container'>
-            <img 
-              id="ProductImg" 
-              data-sizes="auto" 
+            <img
+              id="ProductImg"
+              data-sizes="auto"
               src="static/images/placeholder.jpg"
-              data-src="{% thumbnail product.image 500x0 %}" 
+              data-src="{% thumbnail product.image 500x0 %}"
               loading="lazy"
               alt="{{product.name}}"
               class="img-fluid mx-auto d-block lazy-image"/>
-          
+
             <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{product.ImageURL}}" />
           </div>
         </div>
 
       <div class="small-img-row d-flex justify-content-between align-items-center">
-        <div id="video-container" class="media-wrapper"> 
+        <div id="video-container" class="media-wrapper">
           <video id="main-video" class="small-video" width="100%" height="100%" controls >
             {% if product.video %}
             <source src="{{ product.video.url }}" type="video/mp4">
             {% endif %}
           </video>
-        </div> 
+        </div>
         <div class="small-img-col">
-          <img 
-            src="static/images/placeholder.jpg" 
-            data-src="{% thumbnail product.image 100x0 %}" 
+          <img
+            src="static/images/placeholder.jpg"
+            data-src="{% thumbnail product.image 100x0 %}"
             class="img-fluid small-img lazy-image"
             data-sizes="auto"
           >
         </div>
         <div class="small-img-col">
-          <img 
-            src="static/images/placeholder.jpg" 
-            data-src="{{product.image2}}" 
-            width="100" 
-            height="auto" 
+          <img
+            src="static/images/placeholder.jpg"
+            data-src="{{product.image2}}"
+            width="100"
+            height="auto"
             class="img-fluid small-img lazy-image"
             data-sizes="auto"
           >
         </div>
         <div class="small-img-col">
-          <img 
-            src="static/images/placeholder.jpg" 
-            data-src="{{product.image3}}" 
-            width="100" 
-            height="auto" 
+          <img
+            src="static/images/placeholder.jpg"
+            data-src="{{product.image3}}"
+            width="100"
+            height="auto"
             class="img-fluid small-img lazy-image"
             data-sizes="auto"
           >
@@ -233,16 +217,16 @@
             &#160; &#160; &#160; &#160; &#160;
             <h5>
             <span class="text-muted"><i class="fa fa-shopping-basket fa-sm mx-1"></i>
-              {{product.total_purchases}}</b> customers bought
+              {{product.total_purchases}}</b> lượt mua
             </span>
           </h5>
             <br>
             &#160; &#160; &#160; &#160; &#160;
             <h4>
               {% if product.availibility %}
-              <span class="badge badge-success">Stocking</span>
+              <span class="badge badge-success">Còn hàng </span>
               {% else %}
-              <span class="badge badge-danger">Out of stock</span>
+              <span class="badge badge-danger">Hết hàng </span>
               {% endif %}
             </h4>
           </h4>
@@ -250,7 +234,7 @@
 
           <div class="mb-3">
             <span class="h5 font-weight-bold">{{product.price | floatformat:3}} VND </span>
-            <span class="text-muted">/per piece</span>
+            <span class="text-muted">/một sản phẩm </span>
           </div>
 
           <p>
@@ -258,16 +242,16 @@
           </p>
 
           <div class="row">
-            <dt class="col-3">Type</dt>
-            <dd class="col-9">Regular</dd>
+            <dt class="col-3">Loại</dt>
+            <dd class="col-9">Thông thường</dd>
 
-            <dt class="col-3">Color</dt>
-            <dd class="col-9">Choice</dd>
+            <dt class="col-3">Màu sắc </dt>
+            <dd class="col-9">cChọn lựa </dd>
 
-            <dt class="col-3">Material</dt>
+            <dt class="col-3">Chất liệu </dt>
             <dd class="col-9">{{product.material}}</dd>
 
-            <dt class="col-3">Brand</dt>
+            <dt class="col-3">Hãng </dt>
             <dd class="col-9">{{product.branch}}</dd>
           </div>
           <hr />
@@ -282,20 +266,20 @@
                 <option>XXL</option>
               </select>
             </div>
-            <!--COLOR--> 
+            <!--COLOR-->
             <div class="col-md-5 col-2">
-              <label class="col-9">Color</label>
+              <label class="col-9">Màu sắc </label>
               <select class="form-select border border-secondary" style="height: 35px;">
-                <option>Blue</option>
-                <option>Black</option>
-                <option>White</option>
-                <option>Gray</option>
-                <option>Pink</option>
+                <option>Xanh </option>
+                <option>Đen </option>
+                <option>Trắng </option>
+                <option>Xám </option>
+                <option>Hồng </option>
               </select>
             </div>
           </div>
 
-    
+
     {% if user.is_authenticated %}
     {% if product.id in cart.keys %}
     <form action="{% url 'cart:add' %}" method="POST" style="max-width: 400px">
@@ -303,7 +287,7 @@
       <input type="hidden" name="product_id" value="{{product.id}}">
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text">Quantity</span>
+          <span class="input-group-text">Số lượng</span>
         </div>
         <input
           type="number"
@@ -315,10 +299,10 @@
         />
         <div class="input-group-append btn-group">
           <button class="btn btn-primary" type="submit">
-            <i class="fa fa-cart-plus fa-lg mr-2"></i> Edit
+            <i class="fa fa-cart-plus fa-lg mr-2"></i> Sửa
           </button>
           <a href="{% url 'cart:remove' product.id %}" class="btn btn-danger">
-            <i class="fa fa-times fa-lg mr-2"></i> Delete
+            <i class="fa fa-times fa-lg mr-2"></i> Xóa
           </a>
         </div>
       </div>
@@ -329,20 +313,20 @@
       <input type="hidden" name="quantity" value="1" />
       <input type="hidden" name="product_id" value="{{product.id}}" />
       <button type="submit" class="btn btn-primary">
-        <i class="fa fa-cart-plus fa-lg mr-2"></i> Add to Cart
+        <i class="fa fa-cart-plus fa-lg mr-2"></i> Thêm vào giỏ hàng
       </button>
     </form>
     {% else %}
     <button class="btn btn-primary" disabled>
-      <i class="fa fa-cart-plus fa-lg mr-2"></i> Add to Cart
+      <i class="fa fa-cart-plus fa-lg mr-2"></i> Thêm vào giỏ hàng
     </button>
     {% endif %}
     {% else %}
     <a href="{% url 'login' %}" class="btn btn-primary" disabled>
-      <i class="fa fa-sign-in fa-lg mr-2"></i> Log in to add to Cart
+      <i class="fa fa-sign-in fa-lg mr-2"></i> Đăng nhập để thêm vào giỏ hàng
     </a>
     {% endif %}
-          
+
     </div>
       </main>
     </div>
@@ -360,7 +344,7 @@
             <li class="nav-item d-flex" role="presentation">
               <a class="nav-link d-flex align-items-center justify-content-center w-100 active" id="ex1-tab-1" data-mdb-toggle="pill" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true">Specification</a>
             </li>
-            
+
           </ul>
           <!-- Pills navs -->
 
@@ -369,13 +353,12 @@
             <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
               <p>
                 {{product.description}}
-                
+
               </p>
               <div class="row mb-2">
                 <div class="col-12 col-md-6">
                   <ul class="list-unstyled mb-0">
                     <li><i class="fa fa-check text-success me-2"></i> {{product.characteristic1}}</li>
-                    <li><i class="fa fa-check text-success me-2"></i> Airy, Pleasant and Comfortable to wear</li>
                     <li><i class="fa fa-check text-success me-2"></i> {{product.characteristic2}}</li>
                     <li><i class="fa fa-check text-success me-2"></i> {{product.characteristic3}}</li>
 
@@ -383,9 +366,9 @@
                 </div>
                 <div class="col-12 col-md-6 mb-0">
                   <ul class="list-unstyled">
-                    <li><i class="fa fa-check text-success me-2"></i> Easy fast and ver good</li>
-                    <li><i class="fa fa-check text-success me-2"></i> Some great feature name here</li>
-                    <li><i class="fa fa-check text-success me-2"></i> Modern style and design</li>
+                    <li><i class="fa fa-check text-success me-2"></i> Thoải mái khi mặc, dế dàng phối đồ </li>
+                    <li><i class="fa fa-check text-success me-2"></i> Phù hợp với mọi phong cách </li>
+                    <li><i class="fa fa-check text-success me-2"></i> Thiết kế hiện đại, trẻ trung và năng động </li>
                   </ul>
                 </div>
 
@@ -405,10 +388,10 @@
                   <td class="py-2">onlshop01@gmail.comcom</td>
                 </tr>
                 <tr>
-                  <th class="py-2">Working Time</th>
-                  <td class="py-2">8 a.m-10 p.m (expect Sunday) </td>
+                  <th class="py-2">Thời gian làm việc </th>
+                  <td class="py-2">8 a.m-10 p.m (trừ Chủ nhật) </td>
                 </tr>
-                
+
               </table>
             </div>
             <div class="tab-pane fade mb-2" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
@@ -440,7 +423,7 @@
         <div class="px-0 border rounded-2 shadow-0">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Suggest items</h5>
+              <h5 class="card-title">Sản phẩm gợi ý</h5>
 
               <div class="d-flex mb-3">
                 <a href="#" class="me-3">
@@ -460,7 +443,7 @@
                 </a>
                 <div class="info">
                   <a href="#" class="nav-link mb-1">
-                    White Fur Coat 
+                    White Fur Coat
                   </a>
                   <strong class="text-dark"> &#160;&#160; 209.000 VND </strong>
                 </div>
@@ -497,7 +480,7 @@
       </div>
     </div>
   </div>
-</section> 
+</section>
 /*JS*/
 
 <!--CHO LAZY IMAGE-->
@@ -539,16 +522,16 @@
           src = src.replace("100x0", "500x0");
           ProductImg.setAttribute("src", src);
           ProductImg.setAttribute("srcset", src + " 500w");
-    
+
           // Xóa lớp 'active' khỏi tất cả các hình ảnh nhỏ
           SmallImg.forEach(function(img) {
             img.classList.remove("active");
           });
-    
+
           // Thêm lớp 'active' cho hình ảnh nhỏ hiện tại
           smallImg.classList.add("active");
         });
-    
+
         smallImg.addEventListener("mouseout", function() {
           // Xóa lớp 'active' khỏi hình ảnh nhỏ khi di chuột ra khỏi nó
           smallImg.classList.remove("active");
@@ -566,7 +549,7 @@
         temporaryElement.style.position = 'absolute';
         temporaryElement.style.top = '50%';
         temporaryElement.style.left = '50%';
-        temporaryElement.style.transform = 'translate(-50%, -50%)'; 
+        temporaryElement.style.transform = 'translate(-50%, -50%)';
         temporaryElement.style.width = '100%';
         temporaryElement.style.height = '525px';
         //
